@@ -3,12 +3,29 @@ import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { MountainMark } from "@/components/mountain";
+import { JsonLd } from "@/components/json-ld";
 import { FAQ, type FaqItem } from "@/lib/faq";
+import { faqPageSchema, breadcrumbSchema } from "@/lib/schema";
+import { absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "FAQ",
+  title: "Churpi Dog Chew FAQ — Safety, Ingredients & Delivery",
   description:
-    "Answers on safety, durability, ingredients and delivery for The Original Chew by Sherpa Reserve.",
+    "Answers on safety, durability, ingredients and delivery for The Original Chew — the natural Himalayan churpi (yak cheese) dog chew by Sherpa Reserve.",
+  keywords: [
+    "churpi dog chew faq",
+    "is churpi safe for dogs",
+    "yak cheese chew questions",
+    "how long does churpi last",
+  ],
+  alternates: { canonical: "/faq" },
+  openGraph: {
+    title: "FAQ · Sherpa Reserve",
+    description:
+      "Answers on safety, durability, ingredients and delivery for The Original Chew.",
+    url: absoluteUrl("/faq"),
+    type: "website",
+  },
 };
 
 const CATEGORIES: FaqItem["category"][] = [
@@ -21,6 +38,15 @@ const CATEGORIES: FaqItem["category"][] = [
 export default function FaqPage() {
   return (
     <div className="bg-forest pt-[72px]">
+      <JsonLd
+        data={[
+          faqPageSchema(),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "FAQ", path: "/faq" },
+          ]),
+        ]}
+      />
       <header className="px-5 py-20 text-center sm:px-8 sm:py-28">
         <Reveal>
           <p className="eyebrow">Questions, answered</p>

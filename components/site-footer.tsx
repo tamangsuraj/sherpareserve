@@ -65,6 +65,7 @@ export function SiteFooter() {
               {[
                 { href: "/story", label: "Our Story" },
                 { href: "/shop", label: "Shop the Reserve" },
+                { href: "/blog", label: "Journal" },
                 { href: "/faq", label: "FAQ" },
                 { href: "/cart", label: "Cart" },
               ].map((l) => (

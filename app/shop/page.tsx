@@ -3,18 +3,45 @@ import Image from "next/image";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
 import { ContourDivider } from "@/components/topography";
+import { JsonLd } from "@/components/json-ld";
 import { PRODUCTS, INGREDIENTS } from "@/lib/products";
 import { BRAND } from "@/lib/brand";
+import { productSchema, breadcrumbSchema } from "@/lib/schema";
+import { absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Shop",
+  title: "Shop the Churpi Dog Chew — Small, Medium & Large",
   description:
-    "Three breed-size tiers of The Original Chew — Small, Medium and Large. Pricing in NPR with breed-size guidance.",
+    "Buy The Original Chew, a natural Himalayan churpi (yak cheese) dog chew, in three breed-size tiers — Small, Medium and Large. NPR pricing with a breed-size guide.",
+  keywords: [
+    "buy churpi dog chew",
+    "yak cheese dog chew",
+    "dog chew small medium large",
+    "Himalayan dog chew Nepal",
+    "long lasting dog chew",
+  ],
+  alternates: { canonical: "/shop" },
+  openGraph: {
+    title: "Shop the Churpi Dog Chew · Sherpa Reserve",
+    description:
+      "Three breed-size tiers of The Original Chew — natural Himalayan churpi for dogs.",
+    url: absoluteUrl("/shop"),
+    type: "website",
+  },
 };
 
 export default function ShopPage() {
   return (
     <div className="bg-forest pt-[72px]">
+      <JsonLd
+        data={[
+          productSchema(),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Shop", path: "/shop" },
+          ]),
+        ]}
+      />
       {/* Header */}
       <header className="px-5 py-20 text-center sm:px-8 sm:py-28">
         <Reveal>

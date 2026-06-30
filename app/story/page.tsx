@@ -4,17 +4,56 @@ import Image from "next/image";
 import { Reveal } from "@/components/reveal";
 import { MountainMark } from "@/components/mountain";
 import { ContourDivider } from "@/components/topography";
+import { JsonLd } from "@/components/json-ld";
 import { BRAND } from "@/lib/brand";
+import { breadcrumbSchema } from "@/lib/schema";
+import { absoluteUrl, SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Our Story",
+  title: "Our Story — How Himalayan Churpi Is Made",
   description:
-    "The heritage and sourcing behind Sherpa Reserve — churpi cured the old way in the Himalaya of Nepal.",
+    "The heritage and sourcing behind Sherpa Reserve — how churpi (chhurpi) yak-cheese dog chews are cured, smoked and aged the old way in the Himalaya of Nepal.",
+  keywords: [
+    "how churpi is made",
+    "Himalayan yak cheese",
+    "churpi Nepal",
+    "Sherpa cheese chew",
+    "traditional dog chew",
+  ],
+  alternates: { canonical: "/story" },
+  openGraph: {
+    title: "Our Story · Sherpa Reserve",
+    description:
+      "How churpi yak-cheese dog chews are cured, smoked and aged the old way in Nepal.",
+    url: absoluteUrl("/story"),
+    type: "article",
+  },
 };
 
 export default function StoryPage() {
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${absoluteUrl("/story")}#aboutpage`,
+    name: "Our Story — How Himalayan Churpi Is Made",
+    url: absoluteUrl("/story"),
+    description:
+      "The heritage and sourcing behind Sherpa Reserve — how churpi is cured, smoked and aged the old way in the Himalaya of Nepal.",
+    about: { "@id": `${SITE.url}/#organization` },
+    primaryImageOfPage: absoluteUrl("/images/himalaya.jpg"),
+  };
+
   return (
     <article className="bg-forest pt-[72px]">
+      <JsonLd
+        data={[
+          aboutSchema,
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Our Story", path: "/story" },
+          ]),
+        ]}
+      />
       {/* Editorial hero — photographic */}
       <header className="relative overflow-hidden px-5 py-32 text-center sm:px-8 sm:py-44">
         <Image

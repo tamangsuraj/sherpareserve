@@ -5,12 +5,15 @@ import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
 import { ContourDivider, Topography } from "@/components/topography";
 import { MountainMark, LabelFrame } from "@/components/mountain";
+import { JsonLd } from "@/components/json-ld";
 import { PRODUCTS, INGREDIENTS } from "@/lib/products";
 import { BRAND } from "@/lib/brand";
+import { productSchema } from "@/lib/schema";
 
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={productSchema()} />
       <Hero />
 
       {/* ── Provenance statement ──────────────────────────── */}

@@ -10,6 +10,7 @@ import { MountainMark } from "./mountain";
 const NAV = [
   { href: "/story", label: "Our Story" },
   { href: "/shop", label: "Shop" },
+  { href: "/blog", label: "Journal" },
   { href: "/faq", label: "FAQ" },
 ];
 
