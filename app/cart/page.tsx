@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart, cartSubtotal } from "@/store/cart";
+import Image from "next/image";
 import { getProduct, formatNPR } from "@/lib/products";
 import { MountainMark } from "@/components/mountain";
-import { ChurpiBar } from "@/components/churpi";
 
 export default function CartPage() {
   const { lines, setQty, remove } = useCart();
@@ -46,10 +46,13 @@ export default function CartPage() {
                       exit={{ opacity: 0, height: 0 }}
                       className="flex items-center gap-5 py-6"
                     >
-                      <div className="flex h-20 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-forest-line bg-forest-deep/40">
-                        <ChurpiBar
-                          variant={line.id}
-                          className="w-[88%] drop-shadow-[0_8px_10px_rgba(0,0,0,0.5)]"
+                      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-forest-line">
+                        <Image
+                          src="/images/chhurpi-hard.jpg"
+                          alt="Hard cured chhurpi — The Original Chew"
+                          fill
+                          sizes="80px"
+                          className="object-cover"
                         />
                       </div>
 

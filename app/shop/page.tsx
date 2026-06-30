@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
 import { ContourDivider } from "@/components/topography";
@@ -99,17 +100,30 @@ export default function ShopPage() {
 
           {/* Ingredients reassurance */}
           <Reveal delay={0.15}>
-            <div className="mt-10 flex flex-col items-center justify-between gap-6 rounded-2xl border border-gold/20 bg-forest-soft/30 px-7 py-8 text-center sm:flex-row sm:text-left">
-              <div>
+            <div className="mt-10 grid items-stretch gap-6 sm:grid-cols-[1.1fr_1fr]">
+              <figure className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-forest-line sm:aspect-auto">
+                <Image
+                  src="/images/chhurpi-hard.jpg"
+                  alt="Hard cured chhurpi cheese — The Original Chew"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 45vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/45 to-transparent" />
+                <figcaption className="absolute bottom-4 left-5 data text-bone/85">
+                  Hard cured chhurpi
+                </figcaption>
+              </figure>
+              <div className="flex flex-col justify-center rounded-2xl border border-gold/20 bg-forest-soft/30 px-7 py-8">
                 <p className="eyebrow">Every tier, the same recipe</p>
-                <p className="mt-2 font-serif text-2xl text-bone">
+                <p className="mt-3 font-serif text-2xl text-bone">
                   {INGREDIENTS.join(" · ")}
                 </p>
+                <p className="mt-4 text-sm leading-relaxed text-bone/55">
+                  Grain-free, gluten-free, no preservatives or additives.
+                  Supervise chewing and keep fresh water nearby.
+                </p>
               </div>
-              <p className="max-w-xs text-sm text-bone/55">
-                Grain-free, gluten-free, no preservatives or additives.
-                Supervise chewing and keep fresh water nearby.
-              </p>
             </div>
           </Reveal>
         </div>

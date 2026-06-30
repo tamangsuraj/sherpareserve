@@ -6,7 +6,6 @@ import { type ProductTier, formatNPR } from "@/lib/products";
 import { PRODUCT_SPEC } from "@/lib/brand";
 import { useCart } from "@/store/cart";
 import { Topography } from "./topography";
-import { ChurpiBar } from "./churpi";
 
 export function ProductCard({
   product,
@@ -41,34 +40,35 @@ export function ProductCard({
           : "border-forest-line bg-forest-soft/30 hover:border-gold/35"
       }`}
     >
-      {/* Spec header strip */}
-      <div className="flex items-center justify-between border-b border-forest-line/80 px-6 py-3.5">
+      {/* Spec header */}
+      <div className="flex items-center justify-between border-b border-forest-line/80 px-7 py-3.5">
         <span className="data text-gold/70">{spec.ref}</span>
         {featured ? (
           <span className="data rounded-full border border-gold/40 px-2.5 py-1 text-[10px] text-gold">
             Most Loved
           </span>
         ) : (
-          <span className="data text-bone/35">Net {spec.netWeight}</span>
+          <span className="data text-bone/35">Hardness {spec.hardness}</span>
         )}
       </div>
 
-      {/* Product */}
-      <div className="relative flex h-44 items-center justify-center overflow-hidden border-b border-forest-line/80 bg-forest-deep/40">
+      {/* Weight as the hero of the card */}
+      <div className="relative flex h-44 items-end justify-center overflow-hidden border-b border-forest-line/80 bg-forest-deep/30 px-7 pb-7">
         <Topography
           rings={6}
-          className="absolute h-[150%] w-[150%] text-patina/35 transition-transform duration-700 ease-lux group-hover:scale-105"
+          className="absolute left-1/2 top-1/2 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 text-patina/30 transition-transform duration-700 ease-lux group-hover:scale-105"
         />
         <span className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 vignette" />
-        <ChurpiBar
-          variant={product.id}
-          className="relative w-[78%] drop-shadow-[0_18px_22px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-lux group-hover:-translate-y-1 group-hover:rotate-1"
-        />
+        <div className="relative text-center">
+          <span className="block font-serif text-[3.4rem] font-light leading-none text-bone">
+            {product.weightRange.replace("g", "")}
+          </span>
+          <span className="data mt-2 block text-gold/70">grams · net</span>
+        </div>
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col p-6 sm:p-7">
-        <span className="data text-bone/45">{product.weightRange}</span>
-        <h3 className="mt-2.5 font-serif text-[2rem] font-light leading-none text-bone">
+      <div className="relative z-10 flex flex-1 flex-col p-7">
+        <h3 className="font-serif text-[1.9rem] font-light leading-none text-bone">
           {product.name}
         </h3>
         <p className="mt-2 font-serif text-base italic text-gold/80">
@@ -91,12 +91,6 @@ export function ProductCard({
               Chew time
             </dt>
             <dd className="text-right text-bone/75">{product.chewTime}</dd>
-          </div>
-          <div className="flex justify-between gap-4">
-            <dt className="font-mono text-[11px] uppercase tracking-data text-bone/40">
-              Hardness
-            </dt>
-            <dd className="text-right font-mono text-bone/75">{spec.hardness}</dd>
           </div>
         </dl>
 
