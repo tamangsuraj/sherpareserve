@@ -35,7 +35,14 @@ export function organizationSchema() {
       addressRegion: SITE.address.region,
       addressCountry: SITE.address.country,
     },
-    areaServed: { "@type": "Country", name: SITE.address.countryName },
+    areaServed: [
+      { "@type": "Country", name: "Nepal" },
+      { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "United Kingdom" },
+      { "@type": "Country", name: "Canada" },
+      { "@type": "Country", name: "Australia" },
+      { "@type": "Place", name: "Worldwide" },
+    ],
     sameAs: SITE.social,
   };
 }

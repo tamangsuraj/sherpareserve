@@ -10,7 +10,7 @@ import { productSchema, breadcrumbSchema } from "@/lib/schema";
 import { absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Shop the Churpi Dog Chew — Small, Medium & Large",
+  title: "Shop the Churpi (Chhurpi) Dog Chew — Small, Medium & Large",
   description:
     "Buy The Original Chew, a natural Himalayan churpi (yak cheese) dog chew, in three breed-size tiers — Small, Medium and Large. NPR pricing with a breed-size guide.",
   keywords: [

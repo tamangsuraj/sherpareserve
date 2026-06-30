@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     template: "%s · Sherpa Reserve",
   },
   description:
-    "A 100% natural Himalayan churpi (yak cheese) dog chew from Nepal. Milk, salt, lime juice — nothing else. Long-lasting, grain-free and splinter-free, cured the way Sherpa communities have for centuries.",
+    "A 100% natural Himalayan churpi (chhurpi / yak cheese) dog chew from Nepal. Milk, salt, lime juice — nothing else. Long-lasting, grain-free and splinter-free, cured the way Sherpa communities have for centuries.",
   keywords: ALL_KEYWORDS,
   applicationName: SITE.name,
   authors: [{ name: SITE.name, url: SITE_URL }],

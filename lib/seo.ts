@@ -16,7 +16,7 @@ export const SITE = {
   url: SITE_URL,
   /** Used as the OG/Twitter default and brand description. */
   description:
-    "Sherpa Reserve makes The Original Chew — a 100% natural Himalayan churpi (yak-cheese) dog chew from Nepal. Three ingredients: milk, salt, lime juice. Long-lasting, grain-free and splinter-free.",
+    "Sherpa Reserve makes The Original Chew — a 100% natural Himalayan churpi (chhurpi / yak-cheese) dog chew from Nepal. Three ingredients: milk, salt, lime juice. Long-lasting, grain-free and splinter-free.",
   locale: "en_US",
   twitter: "@sherpareserve",
   email: "hello@sherpareserve.com",
@@ -71,10 +71,36 @@ export const KEYWORDS = {
     "dog chew for heavy chewers",
   ],
   brand: ["Sherpa Reserve", "The Original Chew", "yak cheese bar for dogs"],
+  // International / market-intent searches.
+  market: [
+    "yak cheese dog chew USA",
+    "Himalayan dog chew USA",
+    "yak chews for dogs US",
+    "buy yak chews online",
+    "yak cheese chew UK",
+    "yak chew Canada",
+    "yak chew Australia",
+    "Himalayan yak chew Europe",
+    "international dog chew shipping",
+    "ship dog chews worldwide",
+  ],
+  // Bulk / wholesale / B2B intent.
+  bulk: [
+    "bulk yak cheese dog chews",
+    "wholesale yak chews",
+    "wholesale dog chews",
+    "bulk dog chews",
+    "yak cheese chew supplier",
+    "dog chew wholesale supplier",
+    "buy dog chews in bulk",
+    "yak chew private label",
+  ],
 } as const;
 
 export const ALL_KEYWORDS: string[] = [
   ...KEYWORDS.core,
   ...KEYWORDS.benefit,
   ...KEYWORDS.brand,
+  ...KEYWORDS.market,
+  ...KEYWORDS.bulk,
 ];

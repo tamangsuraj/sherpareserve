@@ -11,7 +11,7 @@ import { absoluteUrl } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Churpi Dog Chew FAQ — Safety, Ingredients & Delivery",
   description:
-    "Answers on safety, durability, ingredients and delivery for The Original Chew — the natural Himalayan churpi (yak cheese) dog chew by Sherpa Reserve.",
+    "Answers on safety, ingredients, durability, international shipping (US & worldwide) and bulk/wholesale orders for The Original Chew — the natural Himalayan churpi (yak cheese) dog chew by Sherpa Reserve.",
   keywords: [
     "churpi dog chew faq",
     "is churpi safe for dogs",
@@ -33,6 +33,8 @@ const CATEGORIES: FaqItem["category"][] = [
   "Safety",
   "Durability",
   "Delivery",
+  "International",
+  "Bulk & Wholesale",
 ];
 
 export default function FaqPage() {
@@ -58,8 +60,8 @@ export default function FaqPage() {
         </Reveal>
         <Reveal delay={0.2}>
           <p className="mx-auto mt-6 max-w-xl text-lg text-bone/60">
-            Everything on safety, durability, ingredients and delivery — in
-            plain language.
+            Everything on safety, ingredients, durability, worldwide shipping
+            and bulk orders — in plain language.
           </p>
         </Reveal>
       </header>
