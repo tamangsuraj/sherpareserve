@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-forest text-bone/80 font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  ::selection {
+    @apply bg-gold/25 text-bone;
+  }
+
+  /* Slim, themed scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #243a2e #0a1410;
+  }
+  *::-webkit-scrollbar {
+    width: 9px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #0a1410;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #243a2e;
+    border-radius: 9999px;
+  }
+}
+
+@layer components {
+  /* ── Wordmark & headings ─────────────────────────── */
+  .wordmark {
+    @apply font-serif uppercase tracking-wordmark;
+    font-optical-sizing: auto;
+  }
+
+  .display-line {
+    @apply font-serif font-light leading-[1.02] tracking-[-0.015em];
+    font-optical-sizing: auto;
+  }
+
+  /* ── Survey / instrument data labels ─────────────── */
+  .data {
+    @apply font-mono text-[11px] uppercase tracking-data text-gold/70;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-data text-gold/75;
+  }
+
+  /* ── Section index marker (cartographic) ─────────── */
+  .index-mark {
+    @apply font-mono text-[11px] tracking-data text-gold/55;
+  }
+
+  /* ── Links ───────────────────────────────────────── */
+  .lux-link {
+    @apply relative inline-block text-bone/65 transition-colors duration-300 hover:text-gold;
+  }
+
+  /* ── Buttons ─────────────────────────────────────── */
+  .btn-gold {
+    @apply relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full
+           bg-gold px-8 py-3.5 font-sans text-[12px] font-medium uppercase tracking-wide text-forest-deep
+           transition-all duration-500 ease-lux
+           hover:shadow-[0_10px_40px_-12px_rgba(201,168,106,0.6)]
+           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold;
+  }
+  /* brass sheen sweep on hover */
+  .btn-gold::after {
+    content: "";
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(
+      100deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.45) 50%,
+      transparent 70%
+    );
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn-gold:hover::after {
+    @apply translate-x-full;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full border border-gold/35
+           px-8 py-3.5 font-sans text-[12px] font-medium uppercase tracking-wide text-gold
+           transition-all duration-500 ease-lux
+           hover:border-gold hover:bg-gold/[0.06]
+           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold;
+  }
+
+  /* ── Certificate / label frame ───────────────────── */
+  .hairline {
+    @apply border-gold/20;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Radial brass glow */
+  .vignette {
+    background: radial-gradient(
+      120% 85% at 50% 0%,
+      rgba(201, 168, 106, 0.07) 0%,
+      transparent 58%
+    );
+  }
+
+  /* Film grain */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  }
+
+  /* Brass gradient text for accents */
+  .text-brass {
+    background: linear-gradient(180deg, #e8d6ac 0%, #c9a86a 55%, #9a7b43 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Animated draw for contour strokes */
+  .draw-on {
+    stroke-dasharray: var(--len, 1200);
+    stroke-dashoffset: var(--len, 1200);
+    animation: draw 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .draw-on {
+    stroke-dashoffset: 0;
+  }
+}
